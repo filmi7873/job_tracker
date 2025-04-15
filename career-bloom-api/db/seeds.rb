@@ -7,3 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+Job.create!([
+  { title: "Frontend Developer", company: "Tech Corp", status: "Applied", applied_on: "2025-04-01" },
+  { title: "Backend Engineer", company: "DataWorks", status: "Interview", applied_on: "2025-04-10" }
+])

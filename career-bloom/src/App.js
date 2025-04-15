@@ -5,52 +5,76 @@ import JobList from './components/JobList';
 
 function App() {
   const [jobs, setJobs] = useState([]);
-  const [newJob, setNewJob] = useState('');
+  const [newJob, setNewJob] = useState({
+    title: '',
+    company: '',
+    status: '',
+    applied_on: '',
+    location: '',
+    tech_keywords: []
+  });
 
-  useEffect(() => {
-    fetch("http://localhost:3000/jobs")
-      .then((res) => res.json())
-      .then((data) => {
-        const jobTitles = data.map((job) => job.title);
-        setJobs(jobTitles);
-      })
-      .catch((err) => console.error("Error fetching jobs:", err));
-  }, []);
-  
+useEffect(() => {
+  fetch("http://localhost:3000/jobs")
+    .then((res) => res.json())
+    .then((data) => {
+      if (Array.isArray(data)) {
+        setJobs(data); // valid
+      } else {
+        console.error("Expected array but got:", data);
+        setJobs([]); // fallback
+      }
+    })
+    .catch((err) => console.error("Error fetching jobs:", err));
+}, []);
+
 
   const handleAddJob = () => {
-    console.log("🟢 Add Job clicked!", newJob); // For debugging
-  
-    if (newJob.trim() === '') return;
-  
+    if (
+      newJob.title.trim() === '' ||
+      newJob.company.trim() === '' ||
+      newJob.status === '' ||
+      newJob.applied_on === ''
+    ) return;
+
     fetch("http://localhost:3000/jobs", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        job: {
-          title: newJob,
-          company: "Unknown",
-          status: "Applied",
-          applied_on: new Date().toISOString().split('T')[0], // e.g., "2025-04-15"
-        },
-      }),
+      body: JSON.stringify({ job: newJob }),
+
+
     })
       .then((res) => {
         if (!res.ok) throw new Error("Failed to create job");
         return res.json();
       })
       .then((data) => {
-        console.log("✅ Job created:", data);
-        setJobs([...jobs, data.title]);
-        setNewJob('');
+        setJobs([...jobs, data]); // push full job object
+        setNewJob({
+          title: '',
+          company: '',
+          status: '',
+          applied_on: '',
+          location: '',
+          tech_keywords: []
+        });      
       })
-      .catch((err) => console.error("🔥 POST ERROR:", err));
+      .catch((err) => console.error(" POST ERROR:", err));
   };
-  
-  
-  
+
+  const handleDeleteJob = (id) => {
+    fetch(`http://localhost:3000/jobs/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to delete job");
+        setJobs(jobs.filter((job) => job.id !== id));
+      })
+      .catch((err) => console.error("🔥 DELETE ERROR:", err));
+  };
+
   return (
     <div className="App">
       <h1>Career Bloom 🌸</h1>
@@ -60,7 +84,7 @@ function App() {
         setNewJob={setNewJob}
         handleAddJob={handleAddJob}
       />
-      <JobList jobs={jobs} />
+      <JobList jobs={jobs} onDelete={handleDeleteJob} />
     </div>
   );
 }

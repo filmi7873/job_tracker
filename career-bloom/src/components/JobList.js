@@ -1,10 +1,10 @@
 import JobCard from './JobCard';
 
-function JobList({ jobs }) {
+function JobList({ jobs, onDelete }) {
   return (
     <ul>
-      {jobs.map((job, index) => (
-        <JobCard key={index} jobTitle={job} />
+      {jobs.map((job) => (
+        <JobCard key={job.id} job={job} onDelete={onDelete} />
       ))}
     </ul>
   );
