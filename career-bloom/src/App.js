@@ -8,17 +8,49 @@ function App() {
   const [newJob, setNewJob] = useState('');
 
   useEffect(() => {
-    const fakeJobs = ['Software Engineer', 'UI Designer', 'Data Analyst'];
-    setJobs(fakeJobs);
+    fetch("http://localhost:3000/jobs")
+      .then((res) => res.json())
+      .then((data) => {
+        const jobTitles = data.map((job) => job.title);
+        setJobs(jobTitles);
+      })
+      .catch((err) => console.error("Error fetching jobs:", err));
   }, []);
+  
 
   const handleAddJob = () => {
-    if (newJob.trim() !== '') {
-      setJobs([...jobs, newJob]);
-      setNewJob('');
-    }
+    console.log("🟢 Add Job clicked!", newJob); // For debugging
+  
+    if (newJob.trim() === '') return;
+  
+    fetch("http://localhost:3000/jobs", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        job: {
+          title: newJob,
+          company: "Unknown",
+          status: "Applied",
+          applied_on: new Date().toISOString().split('T')[0], // e.g., "2025-04-15"
+        },
+      }),
+    })
+      .then((res) => {
+        if (!res.ok) throw new Error("Failed to create job");
+        return res.json();
+      })
+      .then((data) => {
+        console.log("✅ Job created:", data);
+        setJobs([...jobs, data.title]);
+        setNewJob('');
+      })
+      .catch((err) => console.error("🔥 POST ERROR:", err));
   };
-
+  
+  
+  
   return (
     <div className="App">
       <h1>Career Bloom 🌸</h1>

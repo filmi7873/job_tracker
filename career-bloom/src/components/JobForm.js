@@ -1,4 +1,5 @@
 function JobForm({ newJob, setNewJob, handleAddJob }) {
+    
     return (
       <div style={{ marginBottom: '20px' }}>
         <input
