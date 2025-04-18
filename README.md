@@ -6,7 +6,7 @@ Career Bloom is a soft, intuitive job application tracker designed to support re
 
 ---
 
-## ✨ Features
+## Features
 
 - **Multi-Board Job Tracking:** Log applications from LinkedIn, Handshake, Indeed, company sites, and more.
 - **Application Status Workflow:** Track stages like Interested, Applied, Interviewing, Offer, Rejected — and create your own.
@@ -18,7 +18,7 @@ Career Bloom is a soft, intuitive job application tracker designed to support re
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 | Area       | Tech                        |
 |------------|-----------------------------|
@@ -30,13 +30,13 @@ Career Bloom is a soft, intuitive job application tracker designed to support re
 
 ---
 
-## 🌱 Why This Exists
+## Why This Exists
 
 I built this to replace my own chaotic Excel sheet. Career Bloom is a response to the emotional and logistical chaos of job hunting — especially for people navigating uncertainty, self-doubt, and big dreams. I wanted a tool that felt human, hopeful, and genuinely helpful.
 
 ---
 
-## 🔮 Planned Features
+## Planned Features
 
 - Resume keyword suggestions for better alignment
 - Visual timeline of applications
@@ -46,7 +46,7 @@ I built this to replace my own chaotic Excel sheet. Career Bloom is a response t
 
 ---
 
-## 🚧 Development Status
+## Development Status
 
 This project is currently in development!  
 Follow along on [GitHub](#) or reach out at [fatuma.hub@gmail.com](mailto:fatuma.hub@gmail.com) if you're curious, want to collaborate, or just want to say hi.
