@@ -53,7 +53,5 @@ Follow along on [GitHub](#) or reach out at [fatuma.hub@gmail.com](mailto:fatuma
 
 ---
 
-## 💖 Built with love, persistence, and Google Docs open in the background
-
 Made by Fatuma Ilmi — software engineer, systems thinker, and someone who knows the job hunt is more than a numbers game.
 
