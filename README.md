@@ -1,4 +1,4 @@
-# 🌸 Career Bloom
+# Career Bloom (in progress)
 
 **Grow your job search with clarity and care.**
 
@@ -49,9 +49,9 @@ I built this to replace my own chaotic Excel sheet. Career Bloom is a response t
 ## Development Status
 
 This project is currently in development!  
-Follow along on [GitHub](#) or reach out at [fatuma.hub@gmail.com](mailto:fatuma.hub@gmail.com) if you're curious, want to collaborate, or just want to say hi.
+Follow along or reach out at [ilmi.5@buckeyemail.osu.edu] if you're curious, want to collaborate, or just want to say hi.
 
 ---
 
-Made by Fatuma Ilmi — software engineer, systems thinker, and someone who knows the job hunt is more than a numbers game.
+Made by Fatuma Ilmi — someone who knows the job hunt is more than a numbers game.
 
